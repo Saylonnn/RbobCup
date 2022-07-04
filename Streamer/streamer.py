@@ -231,6 +231,22 @@ while (nRet == ueye.IS_SUCCESS):
     cv2.rectangle(frame, yellow_top_left, yellow_bottom_right, 255, 2)
 
 
+    cords_1 = [str(ball_top_left[0]), ",", str(ball_top_left[1]), ",", str(black_top_left[0]), ",",
+               str(black_top_left[1]), ",", str(blue_top_left[0]), ",", str(blue_top_left[1]), ",",
+               str(yellow_top_left[0]), ",", str(yellow_top_left[1]), ",",
+               str(green_top_left[0]), ",", str(green_top_left[1]), ",", str(57), ",", str(286), ",",
+               str(57), ",", str(461), ",", str(947), ",", str(283), ",", str(947), ",", str(458), ",", str(True)]
+
+    s = ''.join(cords_1)
+    print(s)
+
+    for x in self.connections:
+        try:
+            x.send(str.encode(s))
+        except:
+            print("connection closed")
+            self.connections.remove(x)
+
     # ---------------------------------------------------------------------------------------------------------------------------------------
 
     # ...and finally display it
